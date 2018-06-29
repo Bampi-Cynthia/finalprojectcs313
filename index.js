@@ -121,6 +121,89 @@ app.post('/video', function(req,res){
 			});
 
 	});
+app.patch('/video/:id', function(req, res){
+const query =sql`UPDATE video SET
+  account_id = COALESCE(${req.body.account_id}, account_id),
+  title = COALESCE(${req.body.title}, title),
+  youtube_id = COALESCE(${req.body.youtube_id}, youtube_id)
+WHERE id = ${req.params.id}
+RETURNING video.*;`;
+	db.query(query, function(error, result){
+			if (error){
+				throw error;
+			}
+			res.json(result.rows);
+			});
+});
+app.delete('/video/:id', function(req, res){
+const query =sql`DELETE FROM video WHERE id = ${req.params.id}
+RETURNING video.*`;
+	db.query(query, function(error, result){
+			if (error){
+				throw error;
+			}
+			res.json(result.rows);
+			});
+});
+// Create Comment
+app.get('/comment', function(req, res){
+	db.query('SELECT * FROM comment;', function(error, result){
+		if (error){
+			throw error;
+		}
+		res.json(result.rows);
+	});
+});
+app.get('/comment/:id', function(req, res){
+	const query = sql`SELECT * FROM comment WHERE id = ${req.params.id}::INT`;
+	db.query(query, function(error, result){
+		if (error){
+			throw error;
+		}
+		res.json(result.rows);
+	});
+});
+app.post('/comment', function(req,res){
+	const query = sql`INSERT INTO comment (account_id, video_id, content, post_date ) 
+		VALUES (${req.body.account_id}, ${req.body.video_id}, ${req.body.content}, ${post_date}) RETURNING comment.*`;
+		db.query(query, function(error, result){
+			if (error){
+				throw error;
+			}
+			res.json(result.rows);
+			});
+
+	});
+app.patch('/comment/:id', function(req, res){
+const query =sql`UPDATE comment SET
+  account_id = COALESCE(${req.body.account_id}, account_id),
+  video_id = COALESCE(${req.body.video_id}, video_id),
+  content = COALESCE(${req.body.content}, content),
+  post_date = COALESCE(${req.body.post_date}, post_date)
+WHERE id = ${req.params.id}
+RETURNING account.*;`;
+	db.query(query, function(error, result){
+			if (error){
+				throw error;
+			}
+			res.json(result.rows);
+			});
+});
+app.delete('/comment/:id', function(req, res){
+const query =sql`DELETE FROM comment WHERE id = ${req.params.id}
+RETURNING comment.*`;
+	db.query(query, function(error, result){
+			if (error){
+				throw error;
+			}
+			res.json(result.rows);
+			});
+});
+
+
+
+
+
 
 
 app.listen(process.env.PORT || 3000, function() {
