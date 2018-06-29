@@ -17,7 +17,7 @@ ssl: true
 })
 
 
-
+// Create account
 
 let app = express();
 app.use(bodyParser.urlencoded({
@@ -90,16 +90,17 @@ RETURNING account.*`;
 			res.json(result.rows);
 			});
 });
+ // 
 
-app.get('/video', function(req, res){
-	db.query('SELECT * FROM video;', function(error, result){
+app.get('/account/:id', function(req, res){
+	const query = sql`SELECT * FROM account WHERE id = ${req.params.id}::INT`;
+	db.query(query, function(error, result){
 		if (error){
 			throw error;
 		}
 		res.json(result.rows);
 	});
 });
-
 
 
 
