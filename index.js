@@ -111,8 +111,8 @@ app.get('/video/:id', function(req, res){
 	});
 });
 app.post('/video', function(req,res){
-	const query = sql`INSERT INTO video (account_id, tittle, youtube_str ) 
-		VALUES (${req.body.account_id}, ${req.body.tittle}, ${req.body.youtube_str}) RETURNING video.*`;
+	const query = sql`INSERT INTO video (account_id, title, youtube_str ) 
+		VALUES (${req.body.account_id}, ${req.body.title}, ${req.body.youtube_str}) RETURNING video.*`;
 		db.query(query, function(error, result){
 			if (error){
 				throw error;
@@ -121,38 +121,7 @@ app.post('/video', function(req,res){
 			});
 
 	});
-app.patch('/video/:id', function(req, res){
-const query =sql`UPDATE video SET
-  account_id = COALESCE(${req.body.account_id}, account_id),
-  tittle = COALESCE(${req.body.tittle}, tittle),
-  youtube_str = COALESCE(${req.body.youtube_str}, youtube_str)
-WHERE id = ${req.params.id}
-RETURNING video.*;`;
-			if (error){
-				throw error;
-			}
-			res.json(result.rows);
-			});
-});	
-app.delete('/video/:id', function(req, res){
-const query =sql`DELETE FROM video WHERE id = ${req.params.id}
-RETURNING video.*`;
-	db.query(query, function(error, result){
-			if (error){
-				throw error;
-			}
-			res.json(result.rows);
-			});
-});
-// Create Comment
-app.get('/comment', function(req, res){
-	db.query('SELECT * FROM comment;', function(error, result){
-		if (error){
-			throw error;
-		}
-		res.json(result.rows);
-	});
-});
+
 
 app.listen(process.env.PORT || 3000, function() {
 	console.log('Now listening');
