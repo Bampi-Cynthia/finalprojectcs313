@@ -11,6 +11,7 @@ const Pool = require('pg').Pool;
 const sql = require('pga-sql');
 const bodyParser = require('body-parser');
 const bcrypt =require('bcryptjs');
+const session = require('express-session');
 const db = new Pool({
 connectionString: process.env.DATABASE_URL,
 ssl: true
@@ -20,6 +21,7 @@ ssl: true
 // Create account
 
 let app = express();
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
 	extended:false
 }));
@@ -93,7 +95,7 @@ RETURNING account.*`;
  // CREATE VIDEO
 
 app.get('/video', function(req, res){
-	db.query('SELECT * FROM video;', function(error, result){
+	db.query('SELECT * FROM video_view;', function(error, result){
 		if (error){
 			throw error;
 		}

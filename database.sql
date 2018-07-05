@@ -63,6 +63,9 @@ CREATE OR REPLACE VIEW video_view AS
   SELECT
     video.id,
     video.title,
+    video_author.id,
+    video_author.email,
+    video.youtube_str,
     CONCAT('https://www.youtube.com/watch?v=', video.youtube_str) AS url,
     video.share_date,
     jsonb_agg(jsonb_build_object(
@@ -71,6 +74,8 @@ CREATE OR REPLACE VIEW video_view AS
       'post_date', comment.post_date
     )) AS comments
   FROM video
+  INNER JOIN account AS video_author
+    ON video.account_id = video_author.id
   LEFT JOIN comment
     ON video.id = comment.video_id
   LEFT JOIN account
@@ -79,7 +84,9 @@ CREATE OR REPLACE VIEW video_view AS
     video.id,
     video.title,
     video.youtube_str,
-    video.share_date;
+    video.share_date,
+    video_author.id,
+    video_author.email;
 
 
 
