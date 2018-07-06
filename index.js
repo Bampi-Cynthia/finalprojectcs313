@@ -127,7 +127,7 @@ app.patch('/video/:id', function(req, res){
 const query =sql`UPDATE video SET
   account_id = COALESCE(${req.body.account_id}, account_id),
   title = COALESCE(${req.body.title}, title),
-  youtube_id = COALESCE(${req.body.youtube_id}, youtube_id)
+  youtube_str = COALESCE(${req.body.youtube_str}, youtube_str)
 WHERE id = ${req.params.id}
 RETURNING video.*;`;
 	db.query(query, function(error, result){

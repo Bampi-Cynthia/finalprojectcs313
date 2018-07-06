@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS comment;
-DROP TABLE IF EXISTS video;
-DROP TABLE IF EXISTS account;
+DROP TABLE IF EXISTS comment CASCADE;
+DROP TABLE IF EXISTS video CASCADE;
+DROP TABLE IF EXISTS account CASCADE;
 
 
 
@@ -23,7 +23,7 @@ SELECT * FROM account;
 
 CREATE TABLE video (
   id          SERIAL      PRIMARY KEY,
-  account_id  INTEGER     NOT NULL REFERENCES account(id),
+  account_id  INTEGER     NOT NULL REFERENCES account(id) ON DELETE CASCADE,
   title       VARCHAR(64) NOT NULL,
   youtube_str VARCHAR(11) NOT NULL,
   share_date  DATE        NOT NULL DEFAULT now()
@@ -44,15 +44,15 @@ FROM video;
 
 CREATE TABLE comment (
   id         SERIAL  PRIMARY KEY,
-  account_id INTEGER NOT NULL REFERENCES account(id),
-  video_id   INTEGER NOT NULL REFERENCES video(id),
+  account_id INTEGER NOT NULL REFERENCES account(id) ON DELETE CASCADE,
+  video_id   INTEGER NOT NULL REFERENCES video(id) ON DELETE CASCADE,
   content    TEXT    NOT NULL,
   post_date  DATE    NOT NULL DEFAULT now()
 );
 
 INSERT INTO comment (account_id, video_id, content)
   VALUES (1, 1, 'Aw. How cute!'),
-    (1, 1, 'This is another comment');
+    (1, 1, 'This is another comment'),
     (1, 1, 'So Sweet!');
 
 SELECT * FROM comment;
@@ -63,7 +63,7 @@ CREATE OR REPLACE VIEW video_view AS
   SELECT
     video.id,
     video.title,
-    video_author.id,
+    video_author.id AS author_id,
     video_author.email,
     video.youtube_str,
     CONCAT('https://www.youtube.com/watch?v=', video.youtube_str) AS url,

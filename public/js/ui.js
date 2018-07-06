@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	var showAllVideos = document.getElementById('showAllVideos');
 	var showOneVideo = document.getElementById('showOneVideo');
 	var newVideo = document.getElementById('newVideo');
+	var editVideo = document.getElementById('editVideo');
 	showAllVideos.addEventListener('click', function(){
 		get('video', function(error, result){
 			if (error) {
@@ -67,7 +68,7 @@ showOneVideo.addEventListener('click', function(){
 			title: newVideo.elements.namedItem('title').value,
 			youtube_str: newVideo.elements.namedItem('youtube_str').value
 		};
-		
+
 		post('video', data, function(error, result){
 			if (error) {
 				return console.log(error.message);
@@ -75,5 +76,38 @@ showOneVideo.addEventListener('click', function(){
 			console.log(result);
 		});
 	});
+	editVideo.addEventListener('click', function(){
+	var id = newVideo.elements.namedItem('id').value
+	var url = 'video/' + id;
+
+	var data = {
+			account_id:newVideo.elements.namedItem('account_id').value,
+			title: newVideo.elements.namedItem('title').value,
+			youtube_str: newVideo.elements.namedItem('youtube_str').value
+		};
+
+
+		patch(url, data, function(error, result){
+			if (error) {
+				return console.log(error.message);
+			}
+			console.log(result);
+		});
+	})
+	deleteVideo.addEventListener('click', function(){
+	var id = newVideo.elements.namedItem('id').value
+	var url = 'video/' + id;
+
+	
+		erase(url, function(error, result){
+			if (error) {
+				return console.log(error.message);
+			}
+			console.log(result);
+		});
+	})
+
+
+
 
 });
