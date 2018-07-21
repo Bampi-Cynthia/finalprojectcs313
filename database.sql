@@ -13,6 +13,9 @@ password_hash	VARCHAR(60)		NOT NULL,
 join_date		DATE 			NOT NULL DEFAULT now()
 );
 
+SELECT 
+password_hash
+FROM account WHERE email = 'smithb@icloud.com';
 
 INSERT INTO account (email, password_hash)
   VALUES ('smithb@icloud.com' , '1234#');

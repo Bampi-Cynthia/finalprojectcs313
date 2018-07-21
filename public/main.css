@@ -1,71 +1,35 @@
-main {
-    margin-left: 1em;
-    margin-right: 1em;
+h1 {
+  font-weight: 400;
+  font-size: 1.75em;
+  color: #222;
+  margin-bottom: 60px;
+}
+#display{
+
+}
+.wrapper {
+  margin: 20px 0;
+  min-height: 440px;
 }
 
-main > section { margin-bottom: 1em; }
-
-main > section div.framed > div {
-    border: 1px solid black;
-    margin-bottom: 1ex;
-    padding: 1ex;
+label {
+  font-weight: 400;
+  font-size: 1.15em;
+  display: block;
+  padding: 10px 0;
 }
 
-main > section button { padding: 0.5ex 1em; }
-
-main > section input[type="range"] { width: 400px; }
-
-main > section label[for^="YouTube-player-"] { position: absolute; }
-
-main > section textarea {
-    height: 9ex;
-    margin: 0;
-    padding: 0;
-    vertical-align: top;
-    width: 99%;
+img {
+  width: 350px;
+  height: auto;
+  margin-top: 20px;
 }
 
-
-.center { text-align: center; }
-
-.margin-left-m { margin-left: 1em; }
-.margin-right-m { margin-right: 1em; }
-
-.nowrap { white-space: nowrap; }
-
-
-#indicator-display {
-    background-color: #f0f0f0;
-    border-radius: 3ex;
-    display: inline-block;
-    float: right;
-    font-family: monospace;
-    height: 2ex;
-    line-height: 2ex;
-    margin: 1ex 1ex 0 0;
-    padding: 1ex;
-    text-align: center;
-    vertical-align: middle;
-    width: 2ex;
+input[type="text"] {
+  width: 70%;
+  margin: 0 auto;
 }
-
-#YouTube-video-id { font-family: monospace; }
-
-
-@media (max-width: 600px) {
-    main > section iframe {
-      height: 240px;
-      width: 320px;
-    }
-
-    main > section input[type="range"] { width: 320px; }
-}
-
-@media (max-width: 400px) {
-    main > section iframe {
-      height: 200px;
-      width: 200px;
-    }
-
-    main > section input[type="range"] { width: 200px; }
+.video-container{
+   display:inline;
+    
 }

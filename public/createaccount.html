@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Welcome, Please Log In</title>
+	<title>Create an Account</title>
 	<script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -9,10 +9,11 @@
 	<script src="test.js"></script>
 </head>
 <body>
+	<form action="/createaccount" method="post">
 	<form action="/handlelogin" method="get">
 	<input type="text" name="email" placeholder="email"><br>
 	<input type="password" name="password" placeholder="password"><br>
-	<input type ="submit" value="Submit">
+	<input type ="submit" value="Create Account">
 	
 	</form>
 	
