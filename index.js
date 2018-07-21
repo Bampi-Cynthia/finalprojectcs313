@@ -10,7 +10,7 @@ const express = require('express');
 const Pool = require('pg').Pool;
 const sql = require('pga-sql');
 const bodyParser = require('body-parser');
-const bcrypt =require('bcryptjs');
+
 const usercontrol = require("./controllers/usercontroler.js")
 const session = require('express-session');
 const db = new Pool({
@@ -26,6 +26,9 @@ let app = express();
 app.use(express.static('public'));
 
 
+app.get('/', function(req, res) {
+	console.log(req.session);
+});
 
 
 app.get('/account', function(req, res){
