@@ -18,11 +18,17 @@ function handlelogin (req, res){
 	// Load hash from your password DB.
   bcrypt.compare(req.query.password, hash).then(function(res) {
 	console.log(req.query);
-
+bcrypt.hash(req.body.password, 10, function(error, hash) {
+    	if(error ){
+    		console.log("error hashing password")
+    	} else {
+    		console.log(hash)
+    		const query =sql`INSERT INTO account (email, password_hash) VALUES ( ${email} , ${hash})`;
+    	}
 			});
     	});
-    }
-
+    });
+}
 function createaccount (req, res){
 	var email = req.body.email;
 	
