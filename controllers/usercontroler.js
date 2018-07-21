@@ -8,19 +8,20 @@ ssl: true
 
 function handlelogin (req, res){
 	const query = sql`SELECT password_hash FROM account WHERE email = ${req.query.email}`;
-	//console.log(query)
-	// db.query(query, function(error, result){
-	// 			if (error){
-	// 				return res.redirect("/createaccount.html");
-	// 			} else {
-	// 				return res.redirect("/home.html");
-	// 			}
+	console.log(query)
+	 db.query(query, function(error, result){
+	 			if (error){
+	 				return res.redirect("/createaccount.html");
+				} else {
+	 				return res.redirect("/home.html");
+				}
 	// Load hash from your password DB.
-  //bcrypt.compare(req.query.password, hash).then(function(res) {
-	//console.log(req.query);
+  bcrypt.compare(req.query.password, hash).then(function(res) {
+	console.log(req.query);
 
-			//});
-    	}
+			});
+    	});
+    }
 
 function createaccount (req, res){
 	var email = req.body.email;

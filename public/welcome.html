@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="mainc.css">
 <head>
 	<title>Welcome, Please Log In</title>
 	<script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-	<script src="test.js"></script>
+	<script src="usercontroler.js"></script>
 </head>
 <body>
-	<form action="/handlelogin" method="get">
+	<div class="login-page">
+  	<div class="form">
+	<form class = "register-form" action="/handlelogin" method="get">
 	<input type="text" name="email" placeholder="email"><br>
 	<input type="password" name="password" placeholder="password"><br>
 	<input type ="submit" value="Submit">
 	
 	</form>
 	
-
+	
 
 </body>
 </html>
