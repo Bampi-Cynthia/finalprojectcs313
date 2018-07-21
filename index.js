@@ -36,9 +36,7 @@ app.use(session({
   }))
 
 
-app.get('/', function(req, res) {
-	console.log(req.session);
-});
+
 app.get ('/handlelogin',usercontrol.handlelogin)
 app.post ('/createaccount', usercontrol.createaccount)
 
