@@ -1,6 +1,6 @@
 const Pool = require('pg').Pool;
 const sql = require('pga-sql');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 const db = new Pool({
 connectionString: process.env.DATABASE_URL,
 ssl: true
@@ -25,7 +25,7 @@ function handlelogin (req, res){
 function createaccount (req, res){
 	var email = req.body.email;
 	
-    bcrypt.hash(req.body.password, 10, function(error, hash) {
+    bcryptjs.hash(req.body.password, 10, function(error, hash) {
     	if(error ){
     		console.log("error hashing password")
     	} else {
