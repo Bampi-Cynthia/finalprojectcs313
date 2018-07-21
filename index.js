@@ -177,7 +177,7 @@ app.get('/comment/:id', function(req, res){
 });
 app.post('/comment', function(req,res){
 	const query = sql`INSERT INTO comment (account_id, video_id, content, post_date ) 
-		VALUES (${req.body.account_id}, ${req.body.video_id}, ${req.body.content}, ${post_date}) RETURNING comment.*`;
+		VALUES (${req.body.account_id}, ${req.body.video_id}, ${req.body.content}, ${req.body.post_date}) RETURNING comment.*`;
 		db.query(query, function(error, result){
 			if (error){
 				throw error;
