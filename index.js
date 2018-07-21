@@ -10,7 +10,7 @@ const express = require('express');
 const Pool = require('pg').Pool;
 const sql = require('pga-sql');
 const bodyParser = require('body-parser');
-
+const bcrypt =require('bcryptjs');
 const usercontrol = require("./controllers/usercontroler.js")
 const session = require('express-session');
 const db = new Pool({
@@ -24,12 +24,23 @@ ssl: true
 
 let app = express();
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({
+	extended:false
+}));
+app.use(bodyParser.json());
+app.use(session({
+  	name: 'user-server-session',
+  	secret: 'CS313p#$',
+  	saveUninitialized: true,
+  	resave: false
+  }))
 
 
 app.get('/', function(req, res) {
 	console.log(req.session);
 });
-
+app.get ('/handlelogin',usercontrol.handlelogin)
+app.post ('/createaccount', usercontrol.createaccount)
 
 app.get('/account', function(req, res){
 	db.query('SELECT * FROM account;', function(error, result){
