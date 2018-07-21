@@ -25,7 +25,7 @@ function handlelogin (req, res){
 function createaccount (req, res){
 	var email = req.body.email;
 	
-    bcryptjs.hash(req.body.password, 10, function(error, hash) {
+    bcrypt.hash(req.body.password, 10, function(error, hash) {
     	if(error ){
     		console.log("error hashing password")
     	} else {
