@@ -24,7 +24,6 @@
 <h1>Hello, Please Manage your Videos</h1>
 <div id="display"></div>
 <button id="showAllVideos">Show All Videos</button>
-<button id="showOneVideo">Show Video</button>
 <button id="editVideo">Update Video</button>
 <button id="deleteVideo">Delete Video</button>
 <input type = 'number' placeholder= "video id">
@@ -32,14 +31,20 @@
 <script src='js/ui.js'></script>
 <form id="newVideo">
 <label for = "ID"><b>Id</b><br></label>
+<p>To add more videos please start by number 11</p>
 <input name = "id" type = "number" required><br>
-<label for = "accountId"><b>Account Id</b><br></label>	
+<label for = "accountId"><b>Account Id</b><br></label>
+<p>Accoun ID is always 1</p>	
 <input name = "account_id" type="number" required><br>
-<label for = "Title"><b>Title</b><br></label>	
+<label for = "Title"><b>Title</b><br></label>
+<p>Please type the Title of the Video</p>	
 <input name ='title' type="text" maxlength="64" required><br>
 <label for = "Youtubestr"><b>Youtube Identifier</b><br></label>
+<p>Please add the youtube identifier by adding the youtube code after "=".</p>
 <input name="youtube_str" type="text" required><br>
-<button>Add</button>
+<button>Add</button><br>
+</form>
+
 
 	</form>
 </body>

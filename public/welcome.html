@@ -9,17 +9,21 @@
   crossorigin="anonymous"></script>
 	<script src="usercontroler.js"></script>
 </head>
-<body>
-	<div class="login-page">
-  	<div class="form">
-	<form class = "register-form" action="/handlelogin" method="get">
-	<input type="text" name="email" placeholder="email"><br>
-	<input type="password" name="password" placeholder="password"><br>
-	<input type ="submit" value="Submit">
-	
+<body> 
+	<div class= "nav">
+	<div class="center">
+	<h3>Please Login</h3>
+	<form class="register-form" action="/handlelogin" method="get">
+	<input type="text" class = "username" name="email" placeholder="email"><br>
+	<input type="password" class ="password" name="password" placeholder="password"><br>
+	<input type ="submit" value="Login" class="button">
+	<p class="message">Not registered? <a class="message1"href="/createaccount.html">Create an account</a></p>
 	</form>
-	
+	</div>
+	</div>
 	
 
 </body>
 </html>
+
+

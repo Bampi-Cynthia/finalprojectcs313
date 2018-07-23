@@ -7,19 +7,21 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-	<script src="usercontroler.js"></script>
+	<script src="userc.js"></script>
 </head>
-<body>
-	<h1>Please Create an account</h1>
-	<form action="/createaccount" method="post">
-	<form action="/handlelogin" method="get">
-	<input type="text" name="email" placeholder="email"><br>
-	<input type="password" name="password" placeholder="password"><br>
-	<input type ="submit" value="Create Account">
-	
+<body> 
+	<div class= "nav">
+	<div class="center">
+	<h3>Create Account</h3>
+	<form class="register-form" action="/handlelogin" method="get">
+	<input type="text" class = "username" name="email" placeholder="email"><br>
+	<input type="password" class ="password" name="password" placeholder="password"><br>
+	<input type ="submit" value="Login" class="button">
+	<p class="message">Already registered? <a class="message1"href="/welcome.html">Login</a></p>
 	</form>
+	</div>
+	</div>
 	
-
 
 </body>
 </html>
